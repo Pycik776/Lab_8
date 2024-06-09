@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tables</title>
+    <style>
+        th {
+            font-weight: bold;
+            text-align: left;
+        }
+        td {
+            text-align: left;
+        }
+        table {
+            margin: 0 auto;
+        }
+
+        p {
+            color: red;
+            font-style: italic;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Лабараторна робота 8</h1>
+<p>Нараєвський Руслан, КН-20001б</p>
+    <h2>Medicines</h2>
+    <table>
+  <thead>
+    <tr>
+      <th>Registration Number</th>
+      <th>Name</th>
+      <th>Manufacture Date</th>
+      <th>Shelf Life (days)</th>
+      <th>Group</th>
+      <th>Price</th>
+      <th>Prescription Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for medicine in medicines %}
+      <tr>
+        <td>{{ medicine.medicine_registration_number }}</td>
+        <td>{{ medicine.medicine_name }}</td>
+        <td>{{ medicine.manufacture_date }}</td>
+        <td>{{ medicine.shelf_life_days }}</td>
+        <td>{{ medicine.medicine_group }}</td>
+        <td>{{ medicine.price }}</td>
+        <td>{{ medicine.prescription_required }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    <h2>Suppliers</h2>
+    <table>
+  <thead>
+    <tr>
+      <th>Supplier Code</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Contact Person</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for supplier in suppliers %}
+      <tr>
+        <td>{{ supplier.supplier_code }}</td>
+        <td>{{ supplier.supplier_name }}</td>
+        <td>{{ supplier.supplier_address }}</td>
+        <td>{{ supplier.supplier_phone }}</td>
+        <td>{{ supplier.contact_person }}</td>
+        <td>{{ supplier.location }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    <h2>Supplies</h2>
+<table>
+  <thead>
+    <tr>
+        <th><strong>Supply Code</strong></th>
+      <th>Medicine Name</th>
+      <th>Supplier Name</th>
+      <th>Supply Date</th>
+      <th>Quantity Supplied</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for supply in supplies %}
+      <tr>
+        <td>{{ supply.supply_code }}</td>
+        <td>{{ supply.medicine.medicine_name }}</td>
+        <td>{{ supply.supplier.supplier_name }}</td>
+        <td>{{ supply.supply_date }}</td>
+        <td>{{ supply.quantity_supplied }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
